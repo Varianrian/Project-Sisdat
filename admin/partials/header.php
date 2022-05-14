@@ -1,4 +1,5 @@
 <?php include('../config/constants.php')?>
+<?php include('login-check.php')?>
 <html>
     <head>
         <title>Admin Dashboard</title>
@@ -32,6 +33,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="manage-orders.php">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                 </div>
             </div>

@@ -1,9 +1,21 @@
 <?php include('partials/header.php'); ?>
         <!-- main START -->
-        <section class="main" style="min-height: 50%;">
-            <div class="container">
+        <section class="main" style="min-height: 81.75vh;">
+            <div class="container pt-5">
+                <?php
+                    if(isset($_SESSION['login'])){
+                        echo '
+                            <div class="row mb-1">
+                                <div class="col-md-12">
+                                    <h4 class="text-success fs-5 mt-3 text-center"><em>'.$_SESSION['login'].'</em></h4>
+                                </div>
+                            </div>
+                            ';
+                        unset($_SESSION['login']);
+                    }
+                ?>
                 <div class="row">
-                   <div class="col mt-5">
+                   <div class="col">
                        <h3 class="text-dark">Dashboard</h3>
                    </div>
                 </div>
