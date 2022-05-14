@@ -1,0 +1,89 @@
+.jumbotron{
+    /* background-image: url(https://2.bp.blogspot.com/-ATaXlWj5uS4/V_oIi-4ElUI/AAAAAAAABd4/8xach0qJIF0PfiR_xttHYGkKMx4Vcfk4ACLcB/s1600/IMG_20161009_160526_947.jpg);
+    background-size: cover; */
+    padding: 20vh 0px;
+    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+.img-responsive{
+    width: 100%;
+}
+.img-curve{
+    border-radius: 15px;
+}
+.categories{
+    background-color: #212529;
+    padding: 4% 0;
+}
+.categories .card-title{
+    margin-top: 110%;
+}
+.food-menu{
+    background-color: #ececec;
+    padding: 4% 0;
+}
+.food-menu-box{
+    width: 100%;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.food-menu-img{
+    width: 20%;
+    float: left;
+}
+
+.food-menu-desc{
+    width: 70%;
+    float: left;
+    margin-left: 4%;
+}
+
+.food-price{
+    font-size: 1.2rem;
+    margin: 2% 0;
+}
+.food-detail{
+    font-size: 1rem;
+    color: #747d8c;
+}
+
+.footer{
+    background-color: #212529;
+    padding: 1% 0;
+}
+
+.order{
+    width: 85%;
+    margin: 0 auto;
+}
+.input-responsive{
+    width: 96%;
+    padding: 1%;
+    margin-bottom: 3%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.order-label{
+    margin-bottom: 1%; 
+    font-weight: bold;
+}
+
+
+fieldset{
+    border: 1px solid #212529;
+    margin: 5%;
+    padding: 3%;
+    border-radius: 5px;
+}
+
+/* INPUT BORDER */
+.cart input[type="text"], .cart input[type="number"], .cart input[type="email"], .cart input[type="tel"], .cart textarea{
+    border: 0.5px solid #212529;
+    border-radius: 4px;
+}
