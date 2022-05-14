@@ -1,6 +1,6 @@
 <?php include('partials/header.php'); ?>
         <!-- main START -->
-        <section class="manage-admin" style="min-height: 50%;">
+        <section class="manage-admin" style="min-height: 81.75vh;">
             <div class="container">
                 <div class="row mb-1">
                     <div class="col mt-5">
@@ -17,9 +17,26 @@
                             </div>
                             ';
                         unset($_SESSION['add']);
+                    } else if(isset($_SESSION['delete'])){
+                        echo '
+                            <div class="row mb-1">
+                                <div class="col-md-12">
+                                    <h4 class="text-danger fs-5"><em>'.$_SESSION['delete'].'</em></h4>
+                                </div>
+                            </div>
+                            ';
+                        unset($_SESSION['delete']);
+                    } else if(isset($_SESSION['edit'])){
+                        echo '
+                            <div class="row mb-1">
+                                <div class="col-md-12">
+                                    <h4 class="text-success fs-5"><em>'.$_SESSION['edit'].'</em></h4>
+                                </div>
+                            </div>
+                            ';
+                        unset($_SESSION['edit']);
                     }
                 ?>
-
                 <div class="addAdmin">
                     <a href="add-admin.php" class="btn btn-primary mb-2">Add Admin</a>
                 </div>
@@ -65,24 +82,6 @@
                                 }
                             }
                         ?>
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>admin</td>
-                            <td>admin</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-success">Edit Admin</a>
-                                <a href="#" class="btn btn-primary btn-sm btn-danger">Delete Admin</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>admin</td>
-                            <td>admin</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-success">Edit Admin</a>
-                                <a href="#" class="btn btn-primary btn-sm btn-danger">Delete Admin</a>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>

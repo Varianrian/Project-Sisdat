@@ -36,11 +36,12 @@
     //Check apakah sudah di submit?
     if(isset($_POST['submit'])){
         //Ambil data dari form
+        $id = $_GET['id'];
         $username = $_POST['username'];
         $password = ($_POST['new-password']); 
         
         //Buat query
-        $query = "INSERT INTO admin SET username='$username', password='$password'";
+        $query = "UPDATE admin SET username='$username', password='$password' where id_admin='$id'";
         // echo $query;
 
         //Eksekusi query
@@ -49,15 +50,15 @@
         //Cek query
         if($result){
             //Kembali ke halaman index.php
-            $_SESSION['add'] = 'Admin berhasil ditambahkan';            
-            echo "window.location='manage-admin.php';</script>";
+            $_SESSION['edit'] = 'Admin berhasil diedit';            
+            echo "<script>window.location='manage-admin.php';</script>";
             
         }else{
             if(mysqli_errno($conn) == '1062'){
                 // die("Query gagal dijalankan: " . mysqli_errno($conn));
-                echo "window.location='add-admin.php';</script>";
+                echo "<script>alert('Username telah digunakan');window.location='edit-admin.php?id=$id';</script>";
             } else {
-                echo "<script>alert('Failed to insert data<br>');window.location='add-admin.php';</script>";
+                echo "<script>alert('Failed to insert data<br>');window.location='edit-admin.php?id=$id';</script>";
 
             }
         }
