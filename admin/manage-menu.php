@@ -7,7 +7,7 @@
                           <h3 class="text-dark">Manage Menu</h3>
                 </div>
                 <div class="addAdmin">
-                    <a href="#" class="btn btn-primary mb-2">Add Admin</a>
+                    <a href="#" class="btn btn-primary mb-2">Add Menu</a>
                 </div>
                 <table class="table">
                     <thead class="table-dark">
