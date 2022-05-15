@@ -1,6 +1,6 @@
 <?php include('partials/header.php'); ?>
         <!-- main START -->
-        <section class="main" style="min-height: 81.75vh;">
+        <section class="admin main">
             <div class="container pt-5">
                 <?php
                     if(isset($_SESSION['login'])){
