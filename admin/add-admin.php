@@ -1,5 +1,5 @@
 <?php include('partials/header.php'); ?>
-<section class="admin add-admin" style="min-height: 81.75vh;">
+<section class="admin add-admin">
     <div class="container">
         <div class="row mb-1">
             <div class="col mt-5">
