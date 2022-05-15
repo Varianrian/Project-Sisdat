@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row mb-1">
                      <div class="col mt-5">
-                          <h3 class="text-dark">Admin Data</h3>
+                          <h3 class="text-dark">Edit Admin Data</h3>
                     </div>
             </div>
             <form action="" method="post">
@@ -52,7 +52,6 @@
             //Kembali ke halaman index.php
             $_SESSION['edit'] = 'Admin berhasil diedit';            
             echo "<script>window.location='manage-admin.php';</script>";
-            
         }else{
             if(mysqli_errno($conn) == '1062'){
                 // die("Query gagal dijalankan: " . mysqli_errno($conn));

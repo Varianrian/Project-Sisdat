@@ -73,7 +73,7 @@
         }else{
             //gagal
             $_SESSION['error'] = 'Username/Password salah';
-            echo "<script>window.location='login.php';</script>";
+            header('Location:'.SITEURL.'admin/login.php');
         }
     }
 ?>

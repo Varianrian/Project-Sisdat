@@ -6,5 +6,5 @@
     session_destroy();
 
     //balik ke menu login
-    header('location: login.php');
+    header('location:'.SITEURL.'admin/login.php');
 ?>

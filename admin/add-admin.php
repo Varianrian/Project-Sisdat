@@ -6,6 +6,18 @@
                           <h3 class="text-dark">Admin Data</h3>
                     </div>
             </div>
+            <div class="row mb-1">
+                    <div class="col">
+                    <?php 
+                        if(isset($_SESSION['fail'])){
+                            echo '
+                            <h6 class="text-danger">'.$_SESSION['fail'].'</h6>
+                            ';
+                            unset($_SESSION['fail']);
+                        }
+                    ?>
+                    </div>
+            </div>
             <form action="" method="post">
                 <table style="width: 40%;">
                     <div class="mb-3 row">
@@ -50,15 +62,15 @@
         if($result){
             //Kembali ke halaman index.php
             $_SESSION['add'] = 'Admin berhasil ditambahkan';            
-            echo "window.location='manage-admin.php';</script>";
-            
+            echo "<script>window.location='manage-admin.php';</script>";
         }else{
             if(mysqli_errno($conn) == '1062'){
                 // die("Query gagal dijalankan: " . mysqli_errno($conn));
-                echo "window.location='add-admin.php';</script>";
+                $_SESSION['fail'] = 'Username telah digunakan';            
+                echo "<script>window.location='add-admin.php';</script>";
             } else {
-                echo "<script>alert('Failed to insert data<br>');window.location='add-admin.php';</script>";
-
+                $_SESSION['fail'] = 'Admin gagal ditambahkan';            
+                echo "<script>window.location='add-admin.php';</script>";
             }
         }
     }

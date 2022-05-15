@@ -4,6 +4,6 @@
     if(!isset($_SESSION['admin'])){
         //jika belum login, alihkan ke halaman login
         $_SESSION['login'] = 'Anda harus login terlebih dahulu';
-        header('location: login.php');
+        header('location:'.SITEURL.'admin/login.php');
     }
 ?>
