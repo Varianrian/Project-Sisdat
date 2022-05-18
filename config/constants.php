@@ -5,7 +5,7 @@
     define('SITEURL', 'http://localhost/proyek-food-order/');
     define('LOCALHOST', 'localhost');
     define('USERNAME', 'root');
-    define('PASSWORD', 'mysql');
+    define('PASSWORD', 'hamud4103');
     define('DB_NAME', 'testordercrud');   
 
     //connect database

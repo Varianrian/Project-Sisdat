@@ -7,7 +7,7 @@
                           <h3 class="text-dark">Manage Categories</h3>
                 </div>
                 <div class="addAdmin">
-                    <a href="#" class="btn btn-primary mb-2">Add Admin</a>
+                    <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn btn-primary mb-2">Add Admin</a>
                 </div>
                 <table class="table">
                     <thead class="table-dark">
