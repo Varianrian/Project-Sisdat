@@ -42,10 +42,10 @@
                 </tr>
 
                 <tr>
-                    <td>Status :</td>
+                    <td>Statuss :</td>
                     <td>
-                        <input type="radio" name="Status" value="Tersedia"> Tersedia
-                        <input type="radio" name="Status" value="Kosong"> Kosong
+                        <input type="radio" name="Statuss" value="Tersedia"> Tersedia
+                        <input type="radio" name="Statuss" value="Kosong"> Kosong
                     </td>
                 </tr>
 
@@ -68,13 +68,13 @@
 
                 $NamaKategori = $_POST['NamaKategori'];
 
-                if(isset($_POST['Status']))
+                if(isset($_POST['Statuss']))
                 {
-                    $Status = $_POST['Status'];
+                    $Statuss = $_POST['Statuss'];
                 }
                 else
                 {
-                    $Status = "Kosong";
+                    $Statuss = "Kosong";
                 }
 
                 //check whether the image is selected or not
@@ -129,7 +129,7 @@
                 &sql = "INSERT INTO tbl_category SET
                     NamaKategori = '$NamaKategori',
                     Gambar_name = '$Gambar_name',
-                    Status = '$Status'
+                    Statuss = '$Statuss'
                 ";
 
                 //3. Execute the query and save in database
@@ -147,7 +147,7 @@
                     //Failed to add category
                     &_SESSION['add'] = "<div error='success'>Kategori gagal ditambahkan</div>"
                     //Redirect to manage category page
-                    header("Location:".SITEURL,"admin/add-category.php")
+                    header("Location:".SITEURL,"admin/add-category.php");
                 }
             }
         ?>
