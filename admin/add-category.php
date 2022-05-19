@@ -13,25 +13,31 @@
                 unset($_SESSION['add']);
             }
 
+            if(isset($_SESSION['upload']))
+            {
+                echo $_SESSION['upload'];
+                unset($_SESSION['upload']);
+            }
+
         ?>
 
         <br><br>
 
         <!-- Add categories form Starts -->
-        <form action=""method="post">
+        <form action=""method="POST" enctype="multipart/form-data">
 
             <table class = tbl-30>
                 <tr>
-                    <td>Nama Kategori :</td>
+                    <td>Nama Kategori : </td>
                     <td>
                         <input type="text" name="NamaKategori" placeholder="">
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Gambar :</td>
+                    <td>Pilih Gambar :</td>
                     <td>
-                        <input type="file" name="Gambar" placeholder="Choose file" id="filetoupload">
+                        <input type="file" name="Gambar">
                     </td>
                 </tr>
 
@@ -71,9 +77,58 @@
                     $Status = "Kosong";
                 }
 
+                //check whether the image is selected or not
+                //print_r($_FILES['Gambar']);
+
+                //die(); //break the code here
+
+                if(isset($_FILES['Gambar']['name']))
+                {
+                    //upload the image
+                    //To upload the image we need image name, source path and destination path
+                    $Gambar_name = $_FILES['Gambar']['name'];
+
+
+                    //Upload the image only if image is selected
+                    if($Gambar_name != "")
+                    {                   
+                        //Auto rename our image
+                        //Get the extention of our image(jpg, png, gif, etc) e.g "Specialfood.jpg"
+                        $ext = end(explode('.',$Gambar_name));
+
+                        //Rename the image
+                        $Gambar_name = "Food_Category_".rand(000, 999).'.'.$ext; //e.g. Food_Category_034.jpg
+
+                        $source_path = $_FILES['Gambar']['tmp_name'];
+
+                        $destination_path = "../images/category/".$Gambar_name;
+
+                        //Finally upload the image
+                        $upload = move_uploaded_file($source_path, $destination_path);
+
+                        //Check whether the images uploaded or not
+                        //And if the imge is not uploaded than we will stop the process and redirect witg error message
+
+                        if($upload==false){
+                            //Set message
+                            $_SESSION['upload'] = "<div class='error'>Uploading images failed</div>";
+                            //Redirect to add category page
+                            header('location'.SITEURL.'admin/add-category.php');
+                            //Stop process
+                            die();
+                        }
+                    }
+                }
+                else
+                {
+                    //dont upload the image and set image_name values as blank
+                    $Gambar_name="";
+                }
+
                 //2. create sql query to insert kategori into database
                 &sql = "INSERT INTO tbl_category SET
                     NamaKategori = '$NamaKategori',
+                    Gambar_name = '$Gambar_name',
                     Status = '$Status'
                 ";
 
