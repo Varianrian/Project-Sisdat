@@ -8,8 +8,14 @@
             </div>
             <?php 
                 $id = $_GET['id'];
-                $nama = $_GET['nama'];
-                $tgl = $_GET['tgl'];
+                $sql = "SELECT * from kustomer k inner join keranjang on k.id_kustomer = keranjang.id_kustomer inner join orders on keranjang.id_keranjang = orders.id_keranjang";
+                $result = mysqli_query($conn, $sql) or die("Query gagal dijalankan: " . mysqli_errno($conn));
+                if($result){
+                    $data = mysqli_fetch_assoc($result);
+                    $nama = $data['nama'];
+                    $tgl = $data['tgl'];
+                }
+
             ?>
             <form action="" method="post">
                 <table style="width: 40%;">

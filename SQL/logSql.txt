@@ -11,7 +11,7 @@ create table menu (
     nama_gambar varchar(50) NOT NULL,
     deskripsi text NOT NULL,
     harga int NOT NULL,
-    active varchar(50) NOT NULL);
+    status varchar(50) NOT NULL);
 
 create table kustomer (
     id_kustomer int NOT NULL primary key auto_increment,

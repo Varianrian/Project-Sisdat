@@ -17,6 +17,15 @@
                             </div>
                             ';
                         unset($_SESSION['update']);
+                    } else if(isset($_SESSION['delete'])){
+                        echo '
+                            <div class="row mb-1">
+                                <div class="col-md-12">
+                                    <h4 class="text-danger fs-5"><em>'.$_SESSION['delete'].'</em></h4>
+                                </div>
+                            </div>
+                            ';
+                        unset($_SESSION['delete']);
                     }
                 ?>
                 <table class="table">
@@ -43,7 +52,6 @@
 
                                 //Jika ada data
                                 if($row > 0){
-                                    $number = 1;
                                     //Looping data
                                     while($data = mysqli_fetch_assoc($result)){
                                         echo '
@@ -53,13 +61,13 @@
                                                 <td>'.$data['tgl'].'</td>
                                                 <td>'.$data['status'].'</td>
                                                 <td>
-                                                    <a href="update-orders.php?id='.$data['id_orders'].'&nama='.$data['nama'].'&tgl='.$data['tgl'].'" class="btn btn-primary btn-sm btn-success">Edit Admin</a>
-                                                    <a href="delete-admin.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-danger">Delete Admin</a>
+                                                    <a href="update-orders.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-success">Edit Orders</a>
+                                                    <a href="delete-orders.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-danger">Delete Orders</a>
                                                 </td>
                                             </tr>';}
                                 }else{
                                     echo '<tr>';
-                                    echo '<td colspan="4" class="table-danger">Data tidak ditemukan!</td>';
+                                    echo '<td colspan="5" class="table-danger">Data tidak ditemukan!</td>';
                                     echo '</tr>';
                                 }
                             }
