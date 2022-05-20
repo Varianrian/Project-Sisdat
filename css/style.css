@@ -4,6 +4,9 @@
 .footer{
     height: 9vh;
 }
+.categories{
+    min-height: 82vh;
+}
 
 .jumbotron{
     /* background-image: url(https://2.bp.blogspot.com/-ATaXlWj5uS4/V_oIi-4ElUI/AAAAAAAABd4/8xach0qJIF0PfiR_xttHYGkKMx4Vcfk4ACLcB/s1600/IMG_20161009_160526_947.jpg);

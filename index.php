@@ -27,14 +27,14 @@
                     while ($data = mysqli_fetch_assoc($result)) {
                         echo '
                         <div class="col-md-4 col-sm-6 col-6 mb-3">
-                            <div class="card bg-dark">
+                            <a class="card bg-dark" href="categories-menu.php?id='.$data['id_kategori'].'">
                                 <img src="images/' . $data['nama_gambar'] . '" class="card-img" alt="...">
                                 <div class="card-img-overlay">
                                     <div class="title-box m-auto p-md-1 p-sm-1 p-1 rounded bg-light border shadow" >
                                         <h5 class="card-title text-dark"><strong>' . $data['nama'] . '</strong></h5>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                             ';
                     }
