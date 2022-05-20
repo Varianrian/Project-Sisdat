@@ -26,7 +26,7 @@
                     $row = mysqli_fetch_assoc($res);
                     $NamaKategori = $row['Nama_Kategori'];
                     $current_Gambar = $row['Gambar'];
-                    $Status = $row['Status'];
+                    $Statuss = $row['Statuss'];
                 }
                 else
                 {
@@ -79,10 +79,10 @@
                 </tr>
 
                 <tr>
-                    <td>Status :</td>
+                    <td>Statuss :</td>
                     <td>
-                        <input <? php if($Status=="Tersedia") {echo "checked";} ?> type="radio" name="Status" value="Tersedia"> Tersedia
-                        <input <? php if($Status=="Kosong") {echo "checked";} ?> type="radio" name="Status" value="Kosong"> Kosong
+                        <input <? php if($Statuss=="Tersedia") {echo "checked";} ?> type="radio" name="Statuss" value="Tersedia"> Tersedia
+                        <input <? php if($Statuss=="Kosong") {echo "checked";} ?> type="radio" name="Statuss" value="Kosong"> Kosong
                     </td>
                 </tr>
 
@@ -104,7 +104,7 @@
                 $id = $_POST['id'];
                 $NamaKategori = $_POST['NamaKategori'];
                 $current_Gambar = $_POST['current_Gambar'];
-                $Status = $_POST['Status'];
+                $Statuss = $_POST['Statuss'];
 
                 //2. Updating new image if selected
                 //check whether the image selected or not
@@ -175,7 +175,7 @@
                 &sql2 = "INSERT INTO tbl_category SET
                     NamaKategori = '$NamaKategori',
                     Gambar_name = '$Gambar_name',
-                    Status = '$Status'
+                    Statuss = '$Statuss'
                     Where id=$id
                 ";
 
