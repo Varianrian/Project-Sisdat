@@ -43,7 +43,7 @@
                         <div class="col-sm-7 col-md-10 col-form-label">
                             <input type="radio" name="status" value="Delivered">
                             <label class="col-sm-3 col-md-1"  >Delivered</label>
-                            <input type="radio" name="status" value="On-Process" <?php if($data['status_order'] == 'On Process'){echo 'checked';}?>>
+                            <input type="radio" name="status" value="On Process" <?php if($data['status_order'] == 'On Process'){echo 'checked';}?>>
                             <label class="col-sm-3 col-md-2" >On Process</label>
                         </div>
                     </div>

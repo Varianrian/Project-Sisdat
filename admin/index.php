@@ -19,7 +19,7 @@
                 <h3 class="text-dark">Dashboard</h3>
             </div>
         </div>
-        <div class="row justify-content-around mt-3 mb-5 pt-3">
+        <div class="row justify-content-around mt-3 pt-3">
             <div class="col-md-2 border border-dark shadow p-3 mb-5 bg-body rounded">
                 <h4 class="text-center">
                     <?php
@@ -28,9 +28,8 @@
                     if ($result) {
                         $data = mysqli_fetch_assoc($result);
                         echo $data['count(id_admin)'];
-                    }else{
+                    } else {
                         echo '0';
-
                     }
                     ?>
                 </h4>
@@ -44,9 +43,8 @@
                     if ($result) {
                         $data = mysqli_fetch_assoc($result);
                         echo $data['count(id_kategori)'];
-                    }else{
+                    } else {
                         echo '0';
-
                     }
                     ?>
                 </h4>
@@ -60,31 +58,67 @@
                     if ($result) {
                         $data = mysqli_fetch_assoc($result);
                         echo $data['count(id_menu)'];
-                    }else{
+                    } else {
                         echo '0';
-
                     }
                     ?>
                 </h4>
                 <p class="text-center"><strong>Menu</strong></p>
             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 class="text-dark">Orders</h3>
+            </div>
+        </div>
+        <div class="row justify-content-around mt-3 mb-5 pt-3">
             <div class="col-md-2 border border-dark shadow p-3 mb-5 bg-body rounded">
                 <h4 class="text-center">
                     <?php
-                    $sql = "SELECT count(id_order) FROM order";
+                    $sql = "SELECT count(id_orders) FROM orders";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         $data = mysqli_fetch_assoc($result);
-                        echo $data['count(id_order)'];
-                    }else{
+                        echo $data['count(id_orders)'];
+                    } else {
                         echo '0';
-
                     }
                     ?>
                 </h4>
                 <p class="text-center"><strong>Orders</strong></p>
             </div>
+            <div class="col-md-2 border border-dark shadow p-3 mb-5 bg-body rounded">
+                <h4 class="text-center">
+                    <?php
+                    $sql = "SELECT count(id_orders) FROM orders where status = 'Delivered'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        $data = mysqli_fetch_assoc($result);
+                        echo $data['count(id_orders)'];
+                    } else {
+                        echo '0';
+                    }
+                    ?>
+                </h4>
+                <p class="text-center"><strong>Delivered</strong></p>
+            </div>
+            <div class="col-md-2 border border-dark shadow p-3 mb-5 bg-body rounded">
+                <h4 class="text-center">
+                    <?php
+                    $sql = "SELECT count(id_orders) FROM orders where status = 'On Process'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        $data = mysqli_fetch_assoc($result);
+                        echo $data['count(id_orders)'];
+                    } else {
+                        echo '0';
+                    }
+                    ?>
+                </h4>
+                <p class="text-center"><strong>On Process</strong></p>
+            </div>
         </div>
+
 
     </div>
 </section>
