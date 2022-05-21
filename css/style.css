@@ -4,7 +4,7 @@
 .footer{
     height: 9vh;
 }
-.categories{
+.categories, .mainContent{
     min-height: 82vh;
 }
 

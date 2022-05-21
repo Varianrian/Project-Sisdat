@@ -8,11 +8,12 @@
             </div>
             <?php 
                 $id = $_GET['id'];
-                $sql = "SELECT * from kustomer k inner join keranjang on k.id_kustomer = keranjang.id_kustomer inner join orders on keranjang.id_keranjang = orders.id_keranjang";
+                $sql = "SELECT *,kustomer.nama as nama_kust, o.status as status_order FROM orders o JOIN kustomer ON o.id_kustomer = kustomer.id_kustomer JOIN menu ON o.id_menu = menu.id_menu where o.id_orders = $id";
+                // $sql = "SELECT * from kustomer k inner join keranjang on k.id_kustomer = keranjang.id_kustomer inner join orders on keranjang.id_keranjang = orders.id_keranjang";
                 $result = mysqli_query($conn, $sql) or die("Query gagal dijalankan: " . mysqli_errno($conn));
                 if($result){
                     $data = mysqli_fetch_assoc($result);
-                    $nama = $data['nama'];
+                    $nama_kust = $data['nama_kust'];
                     $tgl = $data['tgl'];
                 }
 
@@ -28,7 +29,7 @@
                     <div class="mb-1 row">
                         <label class="col-sm-5 col-md-2 col-form-label">Nama Pemesan</label>
                         <div class="col-sm-3">
-                            <label class="col-form-label"><?php echo $nama ?></label>
+                            <label class="col-form-label"><?php echo $nama_kust ?></label>
                         </div>
                     </div>
                     <div class="mb-1 row">
@@ -41,8 +42,8 @@
                         <label class="col-sm-5 col-md-2 col-form-label">Status</label>
                         <div class="col-sm-7 col-md-10 col-form-label">
                             <input type="radio" name="status" value="Delivered">
-                            <label class="col-sm-3 col-md-1" >Delivered</label>
-                            <input type="radio" name="status" value="On-Process">
+                            <label class="col-sm-3 col-md-1"  >Delivered</label>
+                            <input type="radio" name="status" value="On-Process" <?php if($data['status_order'] == 'On Process'){echo 'checked';}?>>
                             <label class="col-sm-3 col-md-2" >On Process</label>
                         </div>
                     </div>

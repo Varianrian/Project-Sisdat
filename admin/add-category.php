@@ -1,156 +1,107 @@
-<?php include ('partials/menu.php'); ?>
+<?php include('partials/header.php'); ?>
+<section class="admin add-category">
+    <div class="container">
+        <div class="row mb-1">
+            <div class="col mt-5">
+                <h3 class="text-dark">Add Kategori</h3>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col">
+                <?php
+                if (isset($_SESSION['fail'])) {
+                    echo '
+                            <h6 class="text-danger">' . $_SESSION['fail'] . '</h6>
+                            ';
+                    unset($_SESSION['fail']);
+                } else if (isset($_SESSION['upload'])) {
+                    echo '
+                            <h6 class="text-danger">' . $_SESSION['upload'] . '</h6>
+                            ';
+                    unset($_SESSION['upload']);
+                }
+                ?>
+            </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <table style="width: 40%;">
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Nama Kategori</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" autocomplete="off" name="nama" placeholder="input nama" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Gambar</label>
+                    <div class="col-sm-3">
+                        <input type="file" name="image" required>
+                    </div>
+                </div>
 
-<div class="main-content">
-    <div class="wrapper">
-        <h1>Add Kategory</h1>
-
-        <br><br>
-
-        <?php 
-            if(isset($_SESSION['add']))
-            {
-                echo $_SESSION['add'];
-                unset($_SESSION['add']);
-            }
-
-            if(isset($_SESSION['upload']))
-            {
-                echo $_SESSION['upload'];
-                unset($_SESSION['upload']);
-            }
-
-        ?>
-
-        <br><br>
-
-        <!-- Add categories form Starts -->
-        <form action=""method="POST" enctype="multipart/form-data">
-
-            <table class = tbl-30>
-                <tr>
-                    <td>Nama Kategori : </td>
-                    <td>
-                        <input type="text" name="NamaKategori" placeholder="">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Pilih Gambar :</td>
-                    <td>
-                        <input type="file" name="Gambar">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Statuss :</td>
-                    <td>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-3">
                         <input type="radio" name="Statuss" value="Tersedia"> Tersedia
                         <input type="radio" name="Statuss" value="Kosong"> Kosong
-                    </td>
-                </tr>
-
+                    </div>
+                </div>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="submit" value="Add Kategory" class="btn-secondary" >
+                        <input class="btn btn-primary mt-2" type="submit" name="submit" value="Add Admin">
                     </td>
                 </tr>
+
             </table>
-
         </form>
-        <!-- Add categories form ends -->
-
         <?php
-            //check submit atau tidak
-            if(isset($_POST['submit']))
-            {
-                //echo "Kategori Berhasil Ditambahkan";
-                //1. get the value dari kategori
+            //Cek apakah sudah submit
+            if (isset($_POST['submit'])) {
+                $nama_kategori = $_POST['nama'];
 
-                $NamaKategori = $_POST['NamaKategori'];
-
-                if(isset($_POST['Statuss']))
-                {
-                    $Statuss = $_POST['Statuss'];
-                }
-                else
-                {
-                    $Statuss = "Kosong";
+                if(isset($_POST['Statuss'])){
+                    $statuss = $_POST['Statuss']; // dari form
+                } else{
+                    $statuss = "Kosong";
                 }
 
-                //check whether the image is selected or not
-                //print_r($_FILES['Gambar']);
+                if(isset($_FILES['image'])){
+                    $image_name = $_FILES['image']['name'];
 
-                //die(); //break the code here
+                    //get ext
+                    $ext = end(explode(".", $image_name));
 
-                if(isset($_FILES['Gambar']['name']))
-                {
-                    //upload the image
-                    //To upload the image we need image name, source path and destination path
-                    $Gambar_name = $_FILES['Gambar']['name'];
+                    //rename image name
+                    $image_name = "Food_Kategori_".rand(000, 999).".".$ext;
 
 
-                    //Upload the image only if image is selected
-                    if($Gambar_name != "")
-                    {                   
-                        //Auto rename our image
-                        //Get the extention of our image(jpg, png, gif, etc) e.g "Specialfood.jpg"
-                        $ext = end(explode('.',$Gambar_name));
+                    $src_path = $_FILES['image']['tmp_name'];
+                    $dest_path = "../images/category/".$image_name;
+                    $upload = move_uploaded_file($src_path, $dest_path);
 
-                        //Rename the image
-                        $Gambar_name = "Food_Category_".rand(000, 999).'.'.$ext; //e.g. Food_Category_034.jpg
-
-                        $source_path = $_FILES['Gambar']['tmp_name'];
-
-                        $destination_path = "../images/category/".$Gambar_name;
-
-                        //Finally upload the image
-                        $upload = move_uploaded_file($source_path, $destination_path);
-
-                        //Check whether the images uploaded or not
-                        //And if the imge is not uploaded than we will stop the process and redirect witg error message
-
-                        if($upload==false){
-                            //Set message
-                            $_SESSION['upload'] = "<div class='error'>Uploading images failed</div>";
-                            //Redirect to add category page
-                            header('location'.SITEURL.'admin/add-category.php');
-                            //Stop process
-                            die();
-                        }
+                    if(!$upload){
+                        $_SESSION['fail'] = "Data gagal ditambahkan".error_log($upload);
+                        echo "<script>window.location='add-category.php';</script>";
+                        die();
                     }
-                }
-                else
-                {
-                    //dont upload the image and set image_name values as blank
-                    $Gambar_name="";
+                }else{
+                    $image_name = "";
                 }
 
-                //2. create sql query to insert kategori into database
-                &sql = "INSERT INTO tbl_category SET
-                    NamaKategori = '$NamaKategori',
-                    Gambar_name = '$Gambar_name',
-                    Statuss = '$Statuss'
-                ";
-
-                //3. Execute the query and save in database
-                &res = mysqli_query($conn, $sql);
-
-                //4. check whteter the query executed successfully or not and data added or not
-                if(&res == true)
-                {
-                    //query executed successfully and category added
-                    &_SESSION['add'] = "<div class='success'>Kategori berhasil ditambahkan</div>";
-                    //Redirect to manage category page
-                    header("Location:".SITEURL,"admin/manage-category.php");
-                }
-                else{
-                    //Failed to add category
-                    &_SESSION['add'] = "<div error='success'>Kategori gagal ditambahkan</div>"
-                    //Redirect to manage category page
-                    header("Location:".SITEURL,"admin/add-category.php");
+                $sql = "INSERT INTO kategori SET 
+                    nama = '$nama_kategori',
+                    nama_gambar = '$image_name',
+                    Statuss = '$statuss'";
+                // echo $sql;
+                $result = mysqli_query($conn, $sql);
+                if($result){
+                    $_SESSION['add'] = "Data berhasil ditambahkan";
+                    echo "<script>window.location='manage-categories.php';</script>";
+                } else{
+                    $_SESSION['fail'] = "Data gagal ditambahkan".mysqli_error($conn);
+                    echo "<script>window.location='add-category.php';</script>";
                 }
             }
         ?>
     </div>
-</div>
-<?php include ('partials/footer.php'); ?>
+</section>
+<?php include('partials/footer.php'); ?>

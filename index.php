@@ -28,7 +28,7 @@
                         echo '
                         <div class="col-md-4 col-sm-6 col-6 mb-3">
                             <a class="card bg-dark" href="categories-menu.php?id='.$data['id_kategori'].'">
-                                <img src="images/' . $data['nama_gambar'] . '" class="card-img" alt="...">
+                                <img src="images/category/' . $data['nama_gambar'] . '" class="card-img" alt="...">
                                 <div class="card-img-overlay">
                                     <div class="title-box m-auto p-md-1 p-sm-1 p-1 rounded bg-light border shadow" >
                                         <h5 class="card-title text-dark"><strong>' . $data['nama'] . '</strong></h5>
@@ -57,7 +57,7 @@
 
         <div class="row">
             <?php
-            $sql = "SELECT * FROM menu LIMIT 6";
+            $sql = "SELECT * FROM menu where status = 'Tersedia' LIMIT 6";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $rows = mysqli_num_rows($result);
@@ -67,14 +67,14 @@
                         <div class="col-md-6">
                             <div class="food-menu-box shadow p-3 mb-5">
                                 <div class="food-menu-img">
-                                    <img src="images/' . $data['nama_gambar'] . '" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                    <img src="images/menu/' . $data['nama_gambar'] . '" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
                                 </div>
 
                                 <div class="food-menu-desc">
                                     <h4>' . $data['nama'] . '</h4>
                                     <p class="food-price">Rp. ' . $data['harga'] . '</p>
                                     <p class="food-detail mb-5">' . $data['deskripsi'] . '</p>
-                                    <a href="order.html" class="btn btn-primary">Order Now</a>
+                                    <a href="orders.php?id='.$data['id_menu'].'" class="btn btn-primary">Order Now</a>
                                 </div>
                             </div>
                         </div>

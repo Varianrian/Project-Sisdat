@@ -17,8 +17,6 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
-                    class="d-inline-block align-text-top">
                 Minang<strong>Merdeka</strong>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -37,9 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="menu.php">Menu</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="cart.php">Cart</a>
-                    </li>
+                    </li> -->
             </div>
         </div>
     </nav>

@@ -41,7 +41,7 @@
                     <tbody>
                         <?php
                             //Select data admin dari database
-                            $sql = "SELECT * from kustomer k inner join keranjang on k.id_kustomer = keranjang.id_kustomer inner join orders on keranjang.id_keranjang = orders.id_keranjang";
+                            $sql = "SELECT *,kustomer.nama as nama_kust, o.status as status_order FROM orders o JOIN kustomer ON o.id_kustomer = kustomer.id_kustomer JOIN menu ON o.id_menu = menu.id_menu";
 
                             //Eksekusi Query
                             $result = mysqli_query($conn, $sql) or die("Query gagal dijalankan: " . mysqli_errno($conn));
@@ -57,11 +57,11 @@
                                         echo '
                                             <tr>
                                                 <td scope="row">'.$data['id_orders'].'</td>
-                                                <td>'.$data['nama'].'</td>
+                                                <td>'.$data['nama_kust'].'</td>
                                                 <td>'.$data['tgl'].'</td>
-                                                <td>'.$data['status'].'</td>
+                                                <td>'.$data['status_order'].'</td>
                                                 <td>
-                                                    <a href="update-orders.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-success">Edit Orders</a>
+                                                    <a href="update-orders.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-success">Update Orders</a>
                                                     <a href="delete-orders.php?id='.$data['id_orders'].'" class="btn btn-primary btn-sm btn-danger">Delete Orders</a>
                                                 </td>
                                             </tr>';}

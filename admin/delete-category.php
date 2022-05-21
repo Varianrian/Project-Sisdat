@@ -1,20 +1,25 @@
 <?php
     //include constants files
-    include('../config/constants.php')
+    include('../config/constants.php');
 
-    //echo "Delete Page";
+    //echo "Delete Page"
     //check wheter the
-    if(isset($_GET['id']) AND isset($_GET['Gambar_name']))
+    if(isset($_GET['id']))
     {
         //get the value and delete
         //echo "get value and delete";
         $id = $_GET['id'];
-        $Gambar_name = $_GET['Gambar_name'];
+        $sql = "SELECT nama_gambar from kategori WHERE id_kategori = $id";
+        $res = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_assoc($res);
+
+        $Gambar_name = $data['nama_gambar'];
+        // echo $Gambar_name;
 
         //remove the pysical image file is available
         if($Gambar_name != ""){
             //iamge is available. so remove it
-            $path = "../images/category".$Gambar_name;
+            $path = "../images/category/".$Gambar_name;
             //remove the image 
             $remove = unlink($path);
 
@@ -23,7 +28,7 @@
                 //set the session message
                 $_SESSION['remove'] = "<div class='error'>Failed to remove category image.</div>";
                 //redirect to manage category Page
-                header('location:'.SITEURL.'admin/manage_category.php');
+                echo "<script>window.location='manage-categories.php';</script>";
                 //stop the procces
                 die();
             }
@@ -31,7 +36,7 @@
 
         //delete data from database
         //sql query to delete data from database
-        $sql = "DELETE FROM tbl_category WHERE id=$id";
+        $sql = "DELETE FROM kategori WHERE id_kategori=$id";
 
         //execute the query
         $res = mysqli_query($conn, $sql);
@@ -42,14 +47,14 @@
             //set success message and redirect
             $_SESSION['delete'] = "<div class = 'success'>Category deteled successfully</div>";
             //redirect to manage category category
-            header('Location:' . SITEURL . 'admin/manage-category.php');
+            echo "<script>window.location='manage-categories.php';</script>";
         }
         else
         {
             //set fail message and redirect
             $_SESSION['delete'] = "<div class = 'error'>Failed to deleted category</div>";
             //redirect to manage category category
-            header('Location:' . SITEURL . 'admin/manage-category.php');
+            echo "<script>window.location='manage-categories.php';</script>";
         }
 
         //redirect to manage category page with
@@ -58,7 +63,7 @@
     else
     {
         //redirect to manage category page
-        header('Location:' . SITEURL . 'admin/manage-category.php');
+        echo "<script>window.location='manage-categories.php';</script>";
 
     }
 ?>
