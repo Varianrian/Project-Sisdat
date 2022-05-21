@@ -47,7 +47,7 @@
                 </div>
                 <tr>
                     <td colspan="2">
-                        <input class="btn btn-primary mt-2" type="submit" name="submit" value="Add Admin">
+                        <input class="btn btn-primary mt-2" type="submit" name="submit" value="Add Category">
                     </td>
                 </tr>
 
