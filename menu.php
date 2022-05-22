@@ -10,7 +10,7 @@
 
             <div class="row">
             <?php
-            $sql = "SELECT *, menu.nama_gambar as gambar_menu FROM menu INNER JOIN Kategori ON menu.id_kategori = kategori.id_kategori order by kategori.id_kategori desc";
+            $sql = "SELECT * FROM menu where status = 'Tersedia' LIMIT 6";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $rows = mysqli_num_rows($result);
@@ -34,8 +34,8 @@
                             ';
                     }
                 }
-            } else {
-                echo 'Menu tidak ditemukan!';
+            } else{
+                echo "Menu Tidak Tersedia!";
             }
             ?>
             </div>

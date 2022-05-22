@@ -19,7 +19,7 @@
         </div>
         <div class="row justify-content-center">
             <?php
-            $sql = "SELECT * FROM kategori LIMIT 3";
+            $sql = "SELECT * FROM kategori where statuss = 'Tersedia' ORDER BY id_kategori desc LIMIT 3";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $rows = mysqli_num_rows($result);
@@ -57,7 +57,7 @@
 
         <div class="row">
             <?php
-            $sql = "SELECT * FROM menu where status = 'Tersedia' LIMIT 6";
+            $sql = "SELECT * FROM menu where status = 'Tersedia' ORDER BY id_menu desc LIMIT 6";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $rows = mysqli_num_rows($result);
@@ -88,7 +88,7 @@
     </div>
 
     <p class="text-center">
-        <a href="menu.html">
+        <a href="menu.php">
             <h6 class="text-center">See All Menu</h6>
         </a>
     </p>

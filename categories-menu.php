@@ -44,6 +44,8 @@
                         </div>
                             ';
                     }
+                } else {
+                    echo '<h2 class="text-danger text-center"><em>Menu tidak ditemukan!</em></h2>';
                 }
             } else {
                 echo 'Kategori tidak ditemukan!';
