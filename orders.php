@@ -28,7 +28,7 @@
 
                     <div class="row">
                         <div class="food-menu-img">
-                            <img src="images/menu/<? echo $gambar; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                            <img src="images/menu/<?php echo $gambar; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
                         </div>
                         <div class="food-menu-desc">
                             <h3><?php echo $nama; ?></h3>
@@ -55,9 +55,11 @@
                             <label class="input-group-text" for="inputGroupSelect01">Payment Methods</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01" name="payment">
-                            <option value="Transfer" selected>Transfer Bank</option>
+                            <option value="Transfer Bank" selected>Transfer Bank</option>
                             <option value="COD">Bayar Di Tempat</option>
-                            <option value="Gopay">GoPay</option>
+                            <option value="GoPay">GoPay</option>
+                            <option value="Dana">Dana</option>
+                            <option value="OVO">OVO</option>
                         </select>
                     </div>
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">

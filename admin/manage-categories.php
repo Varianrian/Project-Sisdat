@@ -98,7 +98,7 @@
                                         
                                 </td>
                                 
-                                <td>' . $data['Statuss'] . '</td>
+                                <td>' . $data['statuss'] . '</td>
                                 <td>
                                     <a href="update-category.php?id=' . $data['id_kategori'] . '" class="btn btn-primary btn-sm btn-success">Update category</a>
                                     <a href="delete-category.php?id=' . $data['id_kategori'] . '" class="btn btn-primary btn-sm btn-danger">Delete category</a>

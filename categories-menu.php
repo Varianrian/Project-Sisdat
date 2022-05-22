@@ -21,7 +21,7 @@
         </div>
         <div class="row justify-content-center">
             <?php
-            $sql = "SELECT * FROM kategori INNER JOIN menu on menu.id_kategori = kategori.id_kategori WHERE kategori.id_kategori = $id";
+            $sql = "SELECT * FROM kategori INNER JOIN menu on menu.id_kategori = kategori.id_kategori WHERE kategori.id_kategori = $id AND menu.status = 'Tersedia'";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $rows = mysqli_num_rows($result);

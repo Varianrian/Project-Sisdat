@@ -56,7 +56,7 @@
                     <tbody>
                         <?php
                             //Select data admin dari database
-                            $sql = "SELECT *, kategori.nama as nama_kategori, m.nama_gambar as gambar_menu FROM menu m Join kategori On (m.id_kategori = kategori.id_kategori)";
+                            $sql = "SELECT *, kategori.nama as nama_kategori, m.nama_gambar as gambar_menu,  m.nama as nama_menu FROM menu m Join kategori On (m.id_kategori = kategori.id_kategori)";
                             //Eksekusi Query
                             $result = mysqli_query($conn, $sql) or die("Query gagal dijalankan: " . mysqli_errno($conn));
                             //Cek query
@@ -71,7 +71,7 @@
                                     while($row= mysqli_fetch_assoc($result)){
                                         // print_r($row);
                                         $id = $row['id_menu'];
-                                        $nama= $row['nama'];
+                                        $nama= $row['nama_menu'];
                                         $nmKategori = $row['nama_kategori'];
                                         $deskripsi = $row['deskripsi'];
                                         $images = $row['gambar_menu'];
