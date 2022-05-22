@@ -2,7 +2,8 @@ use testordercrud;
 create table kategori (
     id_kategori int primary key NOT NULL auto_increment,
     nama varchar(50) NOT NULL,
-    nama_gambar varchar(50) NOT NULL);
+    nama_gambar varchar(50) NOT NULL,
+    statuss varchar(50) NOT NULL);
 
 create table menu (
     id_menu int primary key NOT NULL auto_increment,
