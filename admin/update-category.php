@@ -27,7 +27,7 @@
                 $data = mysqli_fetch_assoc($res);
                 $NamaKategori = $data['nama'];
                 $current_Gambar = $data['nama_gambar'];
-                $Statuss = $data['Statuss'];
+                $Statuss = $data['statuss'];
             } else {
                 //redirect to manage category with session message
                 $_SESSION['no-category-found'] = "<div class='error'>Category not found</div>";
@@ -76,11 +76,11 @@
                     <div class="col-sm-7 col-md-10 col-form-label">
                     <input <?php if ($Statuss == "Tersedia") {
                                     echo "checked";
-                                } ?> type="radio" name="Statuss" value="Tersedia">
+                                } ?> type="radio" name="statuss" value="Tersedia">
                         <label class="col-sm-3 col-md-1" >Tersedia</label>
                         <input <?php if ($Statuss == "Kosong") {
                                     echo "checked";
-                                } ?> type="radio" name="Statuss" value="Kosong">
+                                } ?> type="radio" name="statuss" value="Kosong">
                         <label class="col-sm-3 col-md-2" >Kosong</label>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
             $id = $_GET['id'];
             $nama = $_POST['nama'];
             $current_Gambar = $_POST['current_Gambar'];
-            $Statuss = $_POST['Statuss'];
+            $statuss = $_POST['statuss'];
 
             //2. Updating new image if selected
             //check whether the image selected or not
@@ -165,7 +165,7 @@
             $sql2 = "UPDATE kategori SET
                     nama = '$nama',
                     nama_gambar = '$Gambar_name',
-                    Statuss = '$Statuss'
+                    statuss = '$statuss'
                     Where id_kategori=$id
                 ";
 
